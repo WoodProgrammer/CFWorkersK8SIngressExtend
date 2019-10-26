@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: marketing-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: marketing.eltigre.online
+    http:
+      paths:
+      - path: /v1/*
+        backend:
+          serviceName: marketing-service-v1
+          servicePort: 8080
+      - path: /v2/*
+        backend:
+          serviceName: marketing-service-v2
+          servicePort: 8080

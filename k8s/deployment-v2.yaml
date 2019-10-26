@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: marketing-v2-deployment
+  labels:
+    app: marketing-v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: marketing-v2
+  template:
+    metadata:
+      labels:
+        app: marketing-v2
+    spec:
+      containers:
+      - name: marketing-v2
+        image: emirozbir/marketing:v2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
